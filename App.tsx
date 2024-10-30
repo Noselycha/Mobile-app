@@ -5,6 +5,8 @@ import SignUp from './src/pages/SignUp';
 import Home from './src/pages/Home';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AddTransaction from './src/pages/Transactions';
+import FlashMessage from 'react-native-flash-message';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +34,13 @@ const App = () => {
           component={Home}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="AddTransaction"
+          component={AddTransaction}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

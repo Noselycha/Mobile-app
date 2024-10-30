@@ -1,74 +1,76 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {Header, TextInput} from '../../components/molecules';
 import {Button, Gap} from '../../components/atoms';
+import {NullPhoto} from '../../assets/icon';
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Header text="Sign Up" />
-      <View style={styles.contentWrapper}>
-        <View style={styles.profilContainer}>
-          <View style={styles.profil}>
-            <View style={styles.add}>
-              <Text style={styles.addLabel}>Add Photo</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <Header
+          text="Sign Up"
+          backButton={true}
+          onPress={() => navigation.goBack()}
+        />
+        <View style={styles.contentWrapper}>
+          <View style={styles.profileContainer}>
+            <View style={styles.profileBorder}>
+              <TouchableOpacity>
+                <Image source={NullPhoto} style={styles.photo} />
+              </TouchableOpacity>
             </View>
           </View>
+          <TextInput label="Full Name" placeholder="Type your full name" />
+          <Gap height={15} />
+          <TextInput
+            label="Email Address"
+            placeholder="Type your email address"
+          />
+          <Gap height={15} />
+          <TextInput label="Password" placeholder="Type your password" />
+          <Gap height={24} />
+          <Button text="Continue" />
         </View>
-        <TextInput label="Full Name" placeholder="Type your full name" />
-        <Gap height={24} />
-        <TextInput
-          label="Email Address"
-          placeholder="Type your email address"
-        />
-        <Gap height={16} />
-        <TextInput label="Password" placeholder="Type your password" />
-        <Gap height={24} />
-        <Button text="Continue  " />
       </View>
-    </View>
+    </ScrollView>
   );
 };
+
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  profileContainer: {
+    alignItems: 'center',
+    marginTop: 24,
+  },
+  profileBorder: {
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: '#8D92A3',
+    height: 110,
+    width: 110,
+    borderRadius: 110 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   contentWrapper: {
     marginTop: 24,
+    backgroundColor: '#FFFFFF',
     flex: 1,
-    backgroundColor: '#FFFFFF',
     paddingHorizontal: 24,
-    paddingTop: 25,
   },
-  profilContainer: {
-    marginTop: 5,
-    alignItems: 'center',
-  },
-  profil: {
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 100,
-    width: 100,
-    borderRadius: 100,
-    borderWidth: 2,
-    borderColor: '#8D92A3',
-    borderStyle: 'dashed',
-  },
-  add: {
-    backgroundColor: '#F0F0F0',
-    width: 90,
+  photo: {
     height: 90,
-    borderRadius: 90 / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  addLabel: {
-    fontFamily: 'Poppins-Light',
-    fontSize: 14,
-    width: 40,
-    textAlign: 'center',
+    width: 90,
   },
 });
-export default SignUp;

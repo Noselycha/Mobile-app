@@ -1,45 +1,33 @@
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
 import {Header, TextInput} from '../../components/molecules';
 import {Button, Gap} from '../../components/atoms';
 import {NullPhoto} from '../../assets/icon';
 
-const SignUp = ({navigation}) => {
+const SignUp = () => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Header
-          text="Sign Up"
-          backButton={true}
-          onPress={() => navigation.goBack()}
-        />
-        <View style={styles.contentWrapper}>
-          <View style={styles.profileContainer}>
-            <View style={styles.profileBorder}>
-              <TouchableOpacity>
-                <Image source={NullPhoto} style={styles.photo} />
-              </TouchableOpacity>
-            </View>
+    <View style={styles.container}>
+      <Header text="Sign Up" backButton={true} />
+      <View style={styles.contentWrapper}>
+        <View style={styles.profileContainer}>
+          <View style={styles.profileBorder}>
+            <TouchableOpacity>
+              <Image source={NullPhoto} style={styles.photo} />
+            </TouchableOpacity>
           </View>
-          <TextInput label="Full Name" placeholder="Type your full name" />
-          <Gap height={15} />
-          <TextInput
-            label="Email Address"
-            placeholder="Type your email address"
-          />
-          <Gap height={15} />
-          <TextInput label="Password" placeholder="Type your password" />
-          <Gap height={24} />
-          <Button text="Continue" />
         </View>
+        <TextInput label="Full Name" placeholder="Type your full name" />
+        <Gap height={15} />
+        <TextInput
+          label="Email Address"
+          placeholder="Type your email address"
+        />
+        <Gap height={15} />
+        <TextInput label="Password" placeholder="Type your password" />
+        <Gap height={24} />
+        <Button text="Continue" />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
